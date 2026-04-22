@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="mk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Domeeio — Print</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #ece4d6; font-family: "Plus Jakarta Sans", -apple-system, system-ui, sans-serif; color: #2a241c; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { width: 100%; min-height: 100vh; padding: 24px 32px; box-sizing: border-box; page-break-after: always; break-after: page; }
+    .page:last-child { page-break-after: auto; break-after: auto; }
+    h1.cover { font-size: 44px; font-weight: 700; letter-spacing: -1px; margin: 0; color: #2a241c; }
+    h2.cover { font-size: 22px; font-weight: 400; font-family: "Instrument Serif", serif; font-style: italic; color: #c97a5f; margin: 4px 0 0; letter-spacing: -0.5px; }
+    .sub { font-size: 14px; color: #615649; line-height: 1.5; max-width: 640px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 28px; }
+    .phone { width: 100%; aspect-ratio: 390 / 844; background: #faf7f2; border-radius: 32px; border: 1.5px solid #ddd1bd; overflow: hidden; padding: 16px 14px; box-sizing: border-box; box-shadow: 0 4px 16px rgba(42,36,28,0.08); display: flex; flex-direction: column; }
+    .phone-label { font-size: 12px; font-weight: 700; color: #615649; text-transform: uppercase; letter-spacing: 0.8px; text-align: center; margin-top: 10px; }
+    @page { size: A4 landscape; margin: 10mm; }
+    @media print {
+      body { background: #fff; }
+      .page { min-height: auto; page-break-after: always; }
+    }
+
+    /* Mini screen styles */
+    .mini-header { padding: 4px 4px 10px; }
+    .mini-title { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; color: #2a241c; }
+    .mini-sub { font-size: 10px; color: #615649; margin-top: 2px; }
+    .card { background: #fff; border: 1px solid #ece4d6; border-radius: 12px; padding: 10px; margin-bottom: 6px; box-shadow: 0 1px 2px rgba(42,36,28,0.04); }
+    .chip { display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: 9px; font-weight: 700; }
+    .chip-primary { background: #f5e3db; color: #7a3820; }
+    .chip-sage { background: #e3ede0; color: #3f5a35; }
+    .chip-amber { background: #f2e7d1; color: #6e4a10; }
+    .chip-rose { background: #f5dde2; color: #823a48; }
+    .chip-success { background: #dfe9d7; color: #355028; }
+    .avatar { width: 26px; height: 26px; border-radius: 26px; color: white; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+    .row { display: flex; gap: 8px; align-items: center; }
+    .row-space { display: flex; justify-content: space-between; align-items: center; }
+    .muted { color: #9a8d7c; font-size: 10px; }
+    .soft { color: #615649; font-size: 11px; }
+    .title-row { font-size: 12px; font-weight: 600; color: #2a241c; line-height: 1.3; margin-top: 4px; }
+    .stat-tile { border-radius: 10px; padding: 8px 10px; }
+    .quick { background: #fff; border: 1px solid #ece4d6; border-radius: 12px; padding: 8px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; }
+    .quick-icon { width: 26px; height: 26px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 20px; }
+    .feat { background: #fff; border: 1px solid #ece4d6; border-radius: 16px; padding: 16px; }
+    .feat-title { font-size: 14px; font-weight: 700; color: #2a241c; margin-top: 8px; }
+    .feat-desc { font-size: 12px; color: #615649; line-height: 1.45; margin-top: 4px; }
+    .feat-dot { width: 10px; height: 10px; border-radius: 10px; display: inline-block; }
+
+    .color-strip { display: flex; gap: 10px; margin-top: 12px; }
+    .sw { flex: 1; border-radius: 10px; padding: 10px; font-size: 10px; color: white; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<!-- ─── PAGE 1 — COVER ─── -->
+<div class="page">
+  <div style="display: flex; align-items: baseline; gap: 12px;">
+    <h1 class="cover">Domeeio</h1>
+    <div style="font-size: 14px; color: #9a8d7c; letter-spacing: 0.4px; text-transform: uppercase; font-weight: 600;">Resident App · Hi-fi Prototype</div>
+  </div>
+  <h2 class="cover">a warmer building, together</h2>
+  <p class="sub" style="margin-top: 14px;">Standardized channel for residents of a 400-unit building in Skopje — issue cases, group chat, polls, bills, calendar, directory, and a Мајстор (craftsman) marketplace. Macedonian primary, English toggle. Built for a single-building pilot, designed to scale multi-tenant.</p>
+
+  <div class="feature-grid">
+    <div class="feat"><span class="feat-dot" style="background:#c97a5f;"></span><div class="feat-title">Cases</div><div class="feat-desc">Report problems with category, photo, location. Tracked with status timeline.</div></div>
+    <div class="feat"><span class="feat-dot" style="background:#7a9a6e;"></span><div class="feat-title">Polls</div><div class="feat-desc">Non-binding polls with live result bars, quorum %, and vote persistence.</div></div>
+    <div class="feat"><span class="feat-dot" style="background:#b88a4a;"></span><div class="feat-title">Chat</div><div class="feat-desc">Building-wide group chat. President is badged so official voice is clear.</div></div>
+    <div class="feat"><span class="feat-dot" style="background:#6e8ba0;"></span><div class="feat-title">Documents</div><div class="feat-desc">Bills, meeting minutes, house rules. Unpaid bill hero card on top.</div></div>
+    <div class="feat"><span class="feat-dot" style="background:#a47aa8;"></span><div class="feat-title">Calendar</div><div class="feat-desc">Month grid + event list for maintenance, meetings, cleaning.</div></div>
+    <div class="feat"><span class="feat-dot" style="background:#c97889;"></span><div class="feat-title">Directory</div><div class="feat-desc">Residents by unit/floor with direct message. President tagged.</div></div>
+    <div class="feat"><span class="feat-dot" style="background:#c97a5f;"></span><div class="feat-title">Мајстор</div><div class="feat-desc">Book a vetted plumber, electrician or handyman. Per-city, independent role.</div></div>
+    <div class="feat"><span class="feat-dot" style="background:#2a241c;"></span><div class="feat-title">Bilingual</div><div class="feat-desc">Full Macedonian + English. Language toggle in Menu and Tweaks.</div></div>
+  </div>
+
+  <div style="margin-top: 22px; font-size: 12px; font-weight: 700; color: #615649; text-transform: uppercase; letter-spacing: 0.8px;">Design system</div>
+  <div class="color-strip">
+    <div class="sw" style="background:#c97a5f;">Terracotta · Primary</div>
+    <div class="sw" style="background:#7a9a6e;">Sage · Secondary</div>
+    <div class="sw" style="background:#b88a4a;">Amber · Accent</div>
+    <div class="sw" style="background:#6e8ba0;">Sky · Accent</div>
+    <div class="sw" style="background:#2a241c;">Ink · Text</div>
+    <div class="sw" style="background:#faf7f2; color:#2a241c; border:1px solid #ece4d6;">Warm white · BG</div>
+  </div>
+</div>
+
+<!-- ─── PAGE 2 — CORE SCREENS ─── -->
+<div class="page">
+  <div style="font-size: 24px; font-weight: 700; color: #2a241c; letter-spacing: -0.4px;">Core screens</div>
+  <div style="font-size: 13px; color: #615649; margin-top: 2px;">Home · Polls · Documents</div>
+
+  <div class="grid">
+    <!-- HOME -->
+    <div>
+      <div class="phone">
+        <div class="mini-header">
+          <div style="font-size: 10px; color: #615649; font-weight: 500;">Зграда Партизанска 42</div>
+          <div class="mini-title" style="font-size: 18px;">Добро утро,</div>
+          <div style="font-family: 'Instrument Serif', serif; font-style: italic; color: #c97a5f; font-size: 18px;">сосед</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin-bottom: 10px;">
+          <div class="stat-tile" style="background:#f5e3db;"><div style="font-size:16px;font-weight:700;color:#7a3820;">1</div><div style="font-size:9px;color:#7a3820;">Мои случаи</div></div>
+          <div class="stat-tile" style="background:#e3ede0;"><div style="font-size:16px;font-weight:700;color:#3f5a35;">2</div><div style="font-size:9px;color:#3f5a35;">Гласања</div></div>
+          <div class="stat-tile" style="background:#f2e7d1;"><div style="font-size:16px;font-weight:700;color:#6e4a10;">1</div><div style="font-size:9px;color:#6e4a10;">Неплатени</div></div>
+        </div>
+        <div style="font-size: 11px; font-weight: 700; margin-bottom: 6px;">Објави</div>
+        <div class="card">
+          <div class="row">
+            <div class="avatar" style="background:#c97a5f;">АС</div>
+            <div style="flex:1;">
+              <div class="row" style="gap:4px;"><span style="font-size:10px;font-weight:600;">Ана Стојановска</span><span class="chip chip-primary">Претс.</span></div>
+              <div class="title-row">Прекин на вода — среда 08:00–14:00</div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size: 11px; font-weight: 700; margin: 8px 0 6px;">Брзи дејства</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
+          <div class="quick"><div class="quick-icon" style="background:#c97a5f;">🔧</div>Пријави</div>
+          <div class="quick"><div class="quick-icon" style="background:#7a9a6e;">📊</div>Гласај</div>
+          <div class="quick"><div class="quick-icon" style="background:#b88a4a;">🪚</div>Мајстор</div>
+          <div class="quick"><div class="quick-icon" style="background:#6e8ba0;">📄</div>Сметки</div>
+        </div>
+      </div>
+      <div class="phone-label">Home</div>
+    </div>
+
+    <!-- POLLS -->
+    <div>
+      <div class="phone">
+        <div class="mini-header">
+          <div class="mini-title">Гласања</div>
+          <div class="mini-sub">2 активни · 1 завршено</div>
+        </div>
+        <div class="card">
+          <div class="row" style="gap:4px;"><span class="chip chip-sage">Активно</span><span class="muted" style="margin-left:auto;">Затвора за 3 дена</span></div>
+          <div class="title-row" style="font-size:13px;">Боја на ходници — реновирање</div>
+          <div style="margin-top:6px; position:relative; background:#f3ede4; border-radius:6px; padding:6px 8px; font-size:10px;">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:57%;background:#e8d4b8;border-radius:6px;"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;"><span>Топла бежа</span><strong>57%</strong></div>
+          </div>
+          <div style="margin-top:4px; position:relative; background:#f3ede4; border-radius:6px; padding:6px 8px; font-size:10px;">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:27%;background:#d0d4d0;border-radius:6px;"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;"><span>Светло сива</span><strong>27%</strong></div>
+          </div>
+          <div style="margin-top:4px; position:relative; background:#f3ede4; border-radius:6px; padding:6px 8px; font-size:10px;">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:16%;background:#c9b299;border-radius:6px;"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;"><span>Постоечка</span><strong>16%</strong></div>
+          </div>
+          <div class="muted" style="margin-top:6px;">Учество: <strong style="color:#2a241c;">62%</strong> · 248/400</div>
+        </div>
+        <div class="card">
+          <div class="row" style="gap:4px;"><span class="chip chip-sage">Активно</span><span class="chip chip-primary">✓ Гласаше</span></div>
+          <div class="title-row" style="font-size:13px;">Заменик претседател</div>
+          <div class="muted" style="margin-top:4px;">Учество: 28% · Затвора за 8 дена</div>
+        </div>
+      </div>
+      <div class="phone-label">Polls</div>
+    </div>
+
+    <!-- DOCS -->
+    <div>
+      <div class="phone">
+        <div class="mini-header">
+          <div class="mini-title">Документи</div>
+        </div>
+        <div style="background: linear-gradient(135deg, #c97a5f, #b88a4a); color:white; border-radius:12px; padding:12px; margin-bottom:8px;">
+          <div style="font-size:9px; font-weight:700; text-transform:uppercase; opacity:0.9;">Неплатена сметка</div>
+          <div style="font-size:11px; font-weight:600; margin-top:4px;">Април 2026</div>
+          <div style="font-size:22px; font-weight:700; margin-top:6px;">1,240 ден.</div>
+          <div style="font-size:9px; opacity:0.9;">Доспева 30 Apr</div>
+        </div>
+        <div class="card row"><div style="width:22px;height:28px;background:#f5e3db;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#7a3820;">PDF</div><div><div class="title-row" style="font-size:11px;">Месечна — Март 2026</div><div class="muted">1,180 ден. · <span class="chip chip-success">✓ Платено</span></div></div></div>
+        <div class="card row"><div style="width:22px;height:28px;background:#f5e3db;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#7a3820;">PDF</div><div><div class="title-row" style="font-size:11px;">Месечна — Февруари</div><div class="muted">1,180 ден. · <span class="chip chip-success">✓ Платено</span></div></div></div>
+        <div class="card row"><div style="width:22px;height:28px;background:#e3ede0;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#3f5a35;">PDF</div><div><div class="title-row" style="font-size:11px;">Записник 12.03.2026</div><div class="muted">4 стр.</div></div></div>
+        <div class="card row"><div style="width:22px;height:28px;background:#dde6ed;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#3e5668;">PDF</div><div><div class="title-row" style="font-size:11px;">Финансиски 2025</div><div class="muted">12 стр.</div></div></div>
+      </div>
+      <div class="phone-label">Documents</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PAGE 3 — COMMUNITY ─── -->
+<div class="page">
+  <div style="font-size: 24px; font-weight: 700; color: #2a241c; letter-spacing: -0.4px;">Community</div>
+  <div style="font-size: 13px; color: #615649; margin-top: 2px;">Cases · Chat · Calendar</div>
+
+  <div class="grid">
+    <!-- CASES -->
+    <div>
+      <div class="phone">
+        <div class="mini-header"><div class="mini-title">Случаи</div></div>
+        <div class="row" style="gap:4px; margin-bottom:8px;"><span style="padding:4px 10px; border-radius:999px; background:#2a241c; color:white; font-size:9px; font-weight:600;">Сите</span><span style="padding:4px 10px; border-radius:999px; background:white; border:1px solid #ece4d6; font-size:9px; color:#615649; font-weight:600;">Мои</span></div>
+        <div class="card">
+          <div class="row"><div style="width:28px;height:28px;border-radius:8px;background:#f3ede4;display:flex;align-items:center;justify-content:center;font-size:14px;">💧</div><div style="flex:1;"><div class="row" style="gap:4px;"><span class="chip chip-rose">Отворен</span><span class="chip" style="background:#f5dcd4;color:#7a2e1e;">Итно</span></div><div class="title-row" style="font-size:11px;">Протекува кров над стан 31</div></div></div>
+        </div>
+        <div class="card">
+          <div class="row"><div style="width:28px;height:28px;border-radius:8px;background:#f3ede4;display:flex;align-items:center;justify-content:center;font-size:14px;">⚡</div><div style="flex:1;"><div class="row" style="gap:4px;"><span class="chip chip-amber">Во тек</span></div><div class="title-row" style="font-size:11px;">Светло не работи на катот 3</div><div class="muted">→ Електро Стан д.о.о.</div></div></div>
+        </div>
+        <div class="card">
+          <div class="row"><div style="width:28px;height:28px;border-radius:8px;background:#f3ede4;display:flex;align-items:center;justify-content:center;font-size:14px;">🛗</div><div style="flex:1;"><div class="row" style="gap:4px;"><span class="chip chip-rose">Отворен</span><span class="chip" style="background:#f5dcd4;color:#7a2e1e;">Итно</span></div><div class="title-row" style="font-size:11px;">Лифт прави чуден звук</div></div></div>
+        </div>
+        <div class="card">
+          <div class="row"><div style="width:28px;height:28px;border-radius:8px;background:#f3ede4;display:flex;align-items:center;justify-content:center;font-size:14px;">🔧</div><div style="flex:1;"><div class="row" style="gap:4px;"><span class="chip chip-success">Решен</span></div><div class="title-row" style="font-size:11px;">Скршено стакло на влез</div></div></div>
+        </div>
+      </div>
+      <div class="phone-label">Cases</div>
+    </div>
+
+    <!-- CHAT -->
+    <div>
+      <div class="phone">
+        <div class="mini-header"><div class="mini-title">Општ разговор</div><div class="mini-sub">400 членови · 12 онлајн</div></div>
+        <div style="text-align:center; font-size:9px; color:#9a8d7c; margin:6px 0;">ДЕНЕС</div>
+        <div style="display:flex; gap:6px; align-items:flex-end; margin-bottom:6px;"><div class="avatar" style="background:#b88a4a;">ЕН</div><div style="background:white; border:1px solid #ece4d6; border-radius:10px; padding:6px 9px; font-size:10px; max-width:70%;">Некој слушна звук од лифтот вечерва?</div></div>
+        <div style="display:flex; gap:6px; align-items:flex-end; margin-bottom:6px;"><div class="avatar" style="background:#7a9a6e;">МП</div><div style="background:white; border:1px solid #ece4d6; border-radius:10px; padding:6px 9px; font-size:10px; max-width:70%;">Да, и јас. Звучи како нешто да се тркала.</div></div>
+        <div style="display:flex; gap:6px; align-items:flex-end; margin-bottom:6px;"><div class="avatar" style="background:#c97a5f;">АС</div><div><div style="font-size:9px; color:#9a8d7c; margin-left:8px;"><span class="chip chip-primary">Претседател</span></div><div style="background:white; border:1px solid #ece4d6; border-radius:10px; padding:6px 9px; font-size:10px;">Отворив случај, сервисерот доаѓа утре во 10.</div></div></div>
+        <div style="display:flex; justify-content:flex-end; margin-bottom:6px;"><div style="background:#c97a5f; color:white; border-radius:10px; padding:6px 9px; font-size:10px; max-width:70%;">Ви благодарам на сите ❤️</div></div>
+      </div>
+      <div class="phone-label">Chat</div>
+    </div>
+
+    <!-- CALENDAR -->
+    <div>
+      <div class="phone">
+        <div class="mini-header"><div class="mini-title">Календар</div></div>
+        <div class="card">
+          <div style="font-size:11px; font-weight:700; margin-bottom:6px;">Април 2026</div>
+          <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap:2px; font-size:8px;">
+            <div style="text-align:center; color:#9a8d7c;">П</div><div style="text-align:center; color:#9a8d7c;">В</div><div style="text-align:center; color:#9a8d7c;">С</div><div style="text-align:center; color:#9a8d7c;">Ч</div><div style="text-align:center; color:#9a8d7c;">П</div><div style="text-align:center; color:#9a8d7c;">С</div><div style="text-align:center; color:#9a8d7c;">Н</div>
+          </div>
+          <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap:2px; margin-top:4px; font-size:9px;">
+            <div></div><div></div>
+            <div style="text-align:center; padding:4px 0;">1</div><div style="text-align:center; padding:4px 0;">2</div><div style="text-align:center; padding:4px 0;">3</div><div style="text-align:center; padding:4px 0;">4</div><div style="text-align:center; padding:4px 0;">5</div>
+            <div style="text-align:center; padding:4px 0;">6</div><div style="text-align:center; padding:4px 0;">7</div><div style="text-align:center; padding:4px 0;">8</div><div style="text-align:center; padding:4px 0;">9</div><div style="text-align:center; padding:4px 0;">10</div><div style="text-align:center; padding:4px 0;">11</div><div style="text-align:center; padding:4px 0;">12</div>
+            <div style="text-align:center; padding:4px 0;">13</div><div style="text-align:center; padding:4px 0;">14</div><div style="text-align:center; padding:4px 0;">15</div><div style="text-align:center; padding:4px 0;">16</div><div style="text-align:center; padding:4px 0;">17</div><div style="text-align:center; padding:4px 0;">18</div><div style="text-align:center; padding:4px 0;">19</div>
+            <div style="text-align:center; padding:4px 0;">20</div><div style="text-align:center; padding:4px 0;">21</div><div style="text-align:center; padding:4px 0; background:#f5e3db; border-radius:6px; font-weight:700; color:#7a3820;">22</div><div style="text-align:center; padding:4px 0; background:#c97a5f; color:white; border-radius:6px; font-weight:700;">23</div><div style="text-align:center; padding:4px 0;">24</div><div style="text-align:center; padding:4px 0;">25<div style="width:3px;height:3px;background:#7a9a6e;border-radius:3px;margin:0 auto;"></div></div><div style="text-align:center; padding:4px 0;">26</div>
+            <div style="text-align:center; padding:4px 0;">27<div style="width:3px;height:3px;background:#b88a4a;border-radius:3px;margin:0 auto;"></div></div><div style="text-align:center; padding:4px 0;">28</div><div style="text-align:center; padding:4px 0;">29<div style="width:3px;height:3px;background:#6e8ba0;border-radius:3px;margin:0 auto;"></div></div><div style="text-align:center; padding:4px 0;">30</div>
+          </div>
+        </div>
+        <div style="display:flex; margin-top:8px; border-radius:10px; overflow:hidden; border:1px solid #ece4d6; background:white;">
+          <div style="width:38px; background:#c97a5f; color:white; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:6px 0;"><div style="font-size:8px; font-weight:700;">WED</div><div style="font-size:15px; font-weight:700;">23</div></div>
+          <div style="flex:1; padding:6px 8px;"><div class="title-row" style="font-size:10px;">Прекин на вода</div><div class="muted">08:00–14:00</div></div>
+        </div>
+        <div style="display:flex; margin-top:4px; border-radius:10px; overflow:hidden; border:1px solid #ece4d6; background:white;">
+          <div style="width:38px; background:#7a9a6e; color:white; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:6px 0;"><div style="font-size:8px; font-weight:700;">FRI</div><div style="font-size:15px; font-weight:700;">25</div></div>
+          <div style="flex:1; padding:6px 8px;"><div class="title-row" style="font-size:10px;">Чистење скали</div><div class="muted">09:00</div></div>
+        </div>
+      </div>
+      <div class="phone-label">Calendar</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PAGE 4 — CRAFTSMEN ─── -->
+<div class="page">
+  <div style="font-size: 24px; font-weight: 700; color: #2a241c; letter-spacing: -0.4px;">Мајстор marketplace</div>
+  <div style="font-size: 13px; color: #615649; margin-top: 2px;">Per-city craftsman role · List · Profile · Booking</div>
+
+  <div class="grid">
+    <!-- LIST -->
+    <div>
+      <div class="phone">
+        <div class="mini-header"><div class="mini-title">Мајстор</div><div class="mini-sub">Резервирај проверен мајстор</div></div>
+        <div class="row" style="gap:3px; margin-bottom:8px; overflow:hidden;">
+          <span style="padding:4px 8px; border-radius:999px; background:#2a241c; color:white; font-size:9px; font-weight:600;">Сите</span>
+          <span style="padding:4px 8px; border-radius:999px; background:white; border:1px solid #ece4d6; font-size:9px; color:#615649;">Водоинст.</span>
+          <span style="padding:4px 8px; border-radius:999px; background:white; border:1px solid #ece4d6; font-size:9px; color:#615649;">Елек.</span>
+        </div>
+        <div class="card">
+          <div class="row"><div class="avatar" style="background:#6e8ba0; width:32px; height:32px; font-size:11px;">БТ</div><div style="flex:1;"><div class="title-row" style="font-size:11px;">Благоја Трајковски ✓</div><div style="font-size:9px; color:#6e8ba0; font-weight:600;">Водоинсталатер · 14 год.</div><div class="row" style="gap:4px; margin-top:3px;"><span style="font-size:9px;">⭐ <strong>4.9</strong> (128)</span><span class="chip chip-success">Денес</span></div></div></div>
+        </div>
+        <div class="card">
+          <div class="row"><div class="avatar" style="background:#b88a4a; width:32px; height:32px; font-size:11px;">ИД</div><div style="flex:1;"><div class="title-row" style="font-size:11px;">Игор Димковски ✓</div><div style="font-size:9px; color:#b88a4a; font-weight:600;">Електричар · 9 год.</div><div class="row" style="gap:4px; margin-top:3px;"><span style="font-size:9px;">⭐ <strong>4.8</strong> (96)</span><span class="chip chip-sage">Утре</span></div></div></div>
+        </div>
+        <div class="card">
+          <div class="row"><div class="avatar" style="background:#7a9a6e; width:32px; height:32px; font-size:11px;">НЃ</div><div style="flex:1;"><div class="title-row" style="font-size:11px;">Никола Ѓоргиевски ✓</div><div style="font-size:9px; color:#7a9a6e; font-weight:600;">Браварџија · 20 год.</div><div class="row" style="gap:4px; margin-top:3px;"><span style="font-size:9px;">⭐ <strong>5.0</strong> (41)</span><span class="chip chip-success">Денес</span></div></div></div>
+        </div>
+        <div class="card">
+          <div class="row"><div class="avatar" style="background:#a47aa8; width:32px; height:32px; font-size:11px;">ЕМ</div><div style="flex:1;"><div class="title-row" style="font-size:11px;">Елена Митревска ✓</div><div style="font-size:9px; color:#a47aa8; font-weight:600;">Климатизер · 11 год.</div><div class="row" style="gap:4px; margin-top:3px;"><span style="font-size:9px;">⭐ <strong>4.9</strong> (73)</span><span class="chip chip-sage">Утре</span></div></div></div>
+        </div>
+      </div>
+      <div class="phone-label">Craftsmen list</div>
+    </div>
+
+    <!-- PROFILE -->
+    <div>
+      <div class="phone">
+        <div class="row" style="gap:10px; padding:6px 0 10px;">
+          <div style="width:48px; height:48px; border-radius:12px; background:#6e8ba0; color:white; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700;">БТ</div>
+          <div style="flex:1;"><div style="font-size:14px; font-weight:700;">Благоја Трајковски ✓</div><div style="font-size:10px; color:#6e8ba0; font-weight:600;">Водоинсталатер</div><div style="font-size:10px; margin-top:3px;">⭐ <strong>4.9</strong> · 128 оценки</div></div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:4px;">
+          <div style="padding:6px 8px; border-radius:8px; background:white; border:1px solid #ece4d6;"><div style="font-size:8px; color:#9a8d7c; text-transform:uppercase;">Искуство</div><div style="font-size:11px; font-weight:700; margin-top:2px;">14 год.</div></div>
+          <div style="padding:6px 8px; border-radius:8px; background:white; border:1px solid #ece4d6;"><div style="font-size:8px; color:#9a8d7c; text-transform:uppercase;">Град</div><div style="font-size:11px; font-weight:700; margin-top:2px;">Скопје</div></div>
+          <div style="padding:6px 8px; border-radius:8px; background:white; border:1px solid #ece4d6;"><div style="font-size:8px; color:#9a8d7c; text-transform:uppercase;">Цена</div><div style="font-size:9px; font-weight:700; margin-top:2px;">800–1,500/ч</div></div>
+        </div>
+        <div style="font-size:10px; color:#615649; line-height:1.45; margin-top:10px;">Брза интервенција, 24/7 за итни случаи. Специјалност: ПВЦ и бакарни цевки.</div>
+        <div style="margin-top:10px; padding:8px 10px; border-radius:10px; background:#e3ede0; font-size:10px; color:#3f5a35; font-weight:600;">✓ Достапен денес за итни повици</div>
+        <div style="font-size:10px; font-weight:700; color:#615649; text-transform:uppercase; margin:10px 0 6px; letter-spacing:0.5px;">Оценки од соседи</div>
+        <div style="font-size:10px;"><strong>Ана, стан 12</strong> <span style="color:#b88a4a;">★★★★★</span></div>
+        <div style="font-size:10px; color:#615649; margin-top:2px; line-height:1.4;">Дојде за 30 минути и го реши проблемот брзо. Препорака!</div>
+        <div style="margin-top:10px; padding:8px 10px; border-radius:10px; background:#c97a5f; color:white; font-size:11px; font-weight:700; text-align:center;">Закажи термин</div>
+      </div>
+      <div class="phone-label">Craftsman profile</div>
+    </div>
+
+    <!-- BOOKING -->
+    <div>
+      <div class="phone">
+        <div style="font-size:16px; font-weight:700; letter-spacing:-0.3px;">Закажи термин</div>
+        <div style="font-size:10px; color:#615649; margin-top:2px;">со Благоја Трајковски</div>
+        <div style="font-size:10px; font-weight:700; color:#615649; text-transform:uppercase; margin:12px 0 6px; letter-spacing:0.5px;">Датум</div>
+        <div style="display:flex; gap:4px;">
+          <div style="flex:1; padding:6px 0; border-radius:8px; background:white; border:1px solid #ece4d6; text-align:center;"><div style="font-size:8px;">Сре</div><div style="font-size:14px; font-weight:700;">23</div></div>
+          <div style="flex:1; padding:6px 0; border-radius:8px; background:white; border:1px solid #ece4d6; text-align:center;"><div style="font-size:8px;">Чет</div><div style="font-size:14px; font-weight:700;">24</div></div>
+          <div style="flex:1; padding:6px 0; border-radius:8px; background:#c97a5f; color:white; border:1.5px solid #c97a5f; text-align:center;"><div style="font-size:8px;">Пет</div><div style="font-size:14px; font-weight:700;">25</div></div>
+          <div style="flex:1; padding:6px 0; border-radius:8px; background:white; border:1px solid #ece4d6; text-align:center;"><div style="font-size:8px;">Саб</div><div style="font-size:14px; font-weight:700;">26</div></div>
+        </div>
+        <div style="font-size:10px; font-weight:700; color:#615649; text-transform:uppercase; margin:12px 0 6px; letter-spacing:0.5px;">Време</div>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:4px; font-size:10px; font-weight:600;">
+          <div style="padding:7px 0; border-radius:8px; background:white; border:1px solid #ece4d6; text-align:center;">08:00</div>
+          <div style="padding:7px 0; border-radius:8px; background:#f5e3db; color:#7a3820; border:1.5px solid #c97a5f; text-align:center;">10:00</div>
+          <div style="padding:7px 0; border-radius:8px; background:white; border:1px solid #ece4d6; text-align:center;">12:00</div>
+          <div style="padding:7px 0; border-radius:8px; background:white; border:1px solid #ece4d6; text-align:center;">14:00</div>
+          <div style="padding:7px 0; border-radius:8px; background:white; border:1px solid #ece4d6; text-align:center;">16:00</div>
+          <div style="padding:7px 0; border-radius:8px; background:white; border:1px solid #ece4d6; text-align:center;">18:00</div>
+        </div>
+        <div style="font-size:10px; font-weight:700; color:#615649; text-transform:uppercase; margin:12px 0 6px; letter-spacing:0.5px;">Опис</div>
+        <div style="padding:8px; border-radius:8px; background:white; border:1px solid #ece4d6; font-size:10px; color:#9a8d7c;">Протекува славина во кујна</div>
+        <div style="margin-top:12px; padding:10px; border-radius:10px; background:#c97a5f; color:white; font-size:11px; font-weight:700; text-align:center;">Потврди резервација</div>
+      </div>
+      <div class="phone-label">Booking flow</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 14px; font-size: 11px; color: #9a8d7c; font-style: italic;">Craftsmen are a separate user role — independent contractors operating per-city. Strongest monetization lever alongside per-unit SaaS fee.</div>
+</div>
+
+<script>
+  (async () => {
+    try { await document.fonts.ready; } catch(e) {}
+    setTimeout(() => window.print(), 500);
+  })();
+</script>
+
+</body>
+</html>
