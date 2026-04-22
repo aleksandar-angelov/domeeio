@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "Domeeio",
+    "slug": "domeeio",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#faf7f2",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#faf7f2"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.domeeio.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#faf7f2"
+      },
+      "package": "com.domeeio.app"
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
