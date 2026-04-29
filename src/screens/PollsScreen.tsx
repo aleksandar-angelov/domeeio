@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { TOKENS, FONTS } from '../constants/tokens';
 import { useApp } from '../context/AppContext';
@@ -20,12 +21,13 @@ export function PollsScreen() {
   const { lang, votes } = useApp();
   const t = T[lang];
   const { POLLS } = DATA;
+  const insets = useSafeAreaInsets();
 
   const active = POLLS.filter(p => !p.closed).length;
   const closed = POLLS.filter(p => p.closed).length;
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: TOKENS.bg }} contentContainerStyle={{ paddingBottom: TAB_BAR_HEIGHT + 20 }} showsVerticalScrollIndicator={false}>
+    <ScrollView style={{ flex: 1, backgroundColor: TOKENS.bg }} contentContainerStyle={{ paddingBottom: TAB_BAR_HEIGHT + insets.bottom + 20 }} showsVerticalScrollIndicator={false}>
       <ScreenHeader title={t.tabs.polls} subtitle={lang === 'mk' ? `${active} активни · ${closed} завршени` : `${active} active · ${closed} closed`} />
       <View style={styles.list}>
         {POLLS.map(p => (
