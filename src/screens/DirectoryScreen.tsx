@@ -21,7 +21,7 @@ export function DirectoryScreen() {
   return (
     <ScrollView style={styles.scroll} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
       <BackHeader />
-      <ScreenHeader title={t.directory} subtitle={`400 ${lang === 'mk' ? 'станови · 12 ката' : 'units · 12 floors'}`} />
+      <ScreenHeader title={t.directory} subtitle={`400 ${lang === 'mk' ? 'станови · 12 ката' : 'units · 12 floors'}`} skipTopInset />
       <View style={styles.list}>
         {others.map(r => (
           <Card key={r.id} padding={12}>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { TOKENS, FONTS } from '../constants/tokens';
 import { useApp } from '../context/AppContext';
@@ -18,6 +19,7 @@ export function DocsScreen() {
   const t = T[lang];
   const { DOCS } = DATA;
   const [tab, setTab] = useState<DocTab>('all');
+  const insets = useSafeAreaInsets();
 
   const groups: Record<DocTab, typeof DOCS> = {
     all: DOCS,
@@ -35,7 +37,7 @@ export function DocsScreen() {
   };
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: TOKENS.bg }} contentContainerStyle={{ paddingBottom: TAB_BAR_HEIGHT + 20 }} showsVerticalScrollIndicator={false}>
+    <ScrollView style={{ flex: 1, backgroundColor: TOKENS.bg }} contentContainerStyle={{ paddingBottom: TAB_BAR_HEIGHT + insets.bottom + 20 }} showsVerticalScrollIndicator={false}>
       <ScreenHeader title={t.tabs.docs} />
 
       {/* Unpaid bill banner */}

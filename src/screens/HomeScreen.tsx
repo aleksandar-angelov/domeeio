@@ -3,6 +3,7 @@ import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-nati
 import { useNavigation, CompositeNavigationProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RootStackParamList, TabParamList } from '../types/navigation';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -29,6 +30,7 @@ export function HomeScreen() {
   const navigation = useNavigation<Nav>();
   const { lang } = useApp();
   const t = T[lang];
+  const insets = useSafeAreaInsets();
   const { ANNOUNCEMENTS, POLLS, EVENTS, RESIDENTS, CASES } = DATA;
 
   const hour = new Date().getHours();
@@ -42,9 +44,9 @@ export function HomeScreen() {
   const nextEvent = EVENTS[0];
 
   return (
-    <ScrollView style={styles.scroll} contentContainerStyle={{ paddingBottom: TAB_BAR_HEIGHT + 20 }} showsVerticalScrollIndicator={false}>
+    <ScrollView style={styles.scroll} contentContainerStyle={{ paddingBottom: TAB_BAR_HEIGHT + insets.bottom + 20 }} showsVerticalScrollIndicator={false}>
       {/* Header */}
-      <LinearGradient colors={[TOKENS.bgSubtle, TOKENS.bg]} style={styles.header}>
+      <LinearGradient colors={[TOKENS.bgSubtle, TOKENS.bg]} style={[styles.header, { paddingTop: insets.top + 20 }]}>
         <View style={styles.headerTop}>
           <View>
             <Text style={styles.buildingName}>{t.buildingName}</Text>
@@ -166,7 +168,7 @@ function QuickAction({ icon, label, bg, onPress, count }: { icon: React.ReactNod
 
 const styles = StyleSheet.create({
   scroll: { flex: 1, backgroundColor: TOKENS.bg },
-  header: { padding: 20, paddingBottom: 16 },
+  header: { paddingHorizontal: 20, paddingBottom: 16 },
   headerTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 },
   buildingName: { fontSize: 13, fontFamily: FONTS.medium, color: TOKENS.inkSoft },
   greeting: { fontSize: 24, fontFamily: FONTS.bold, color: TOKENS.ink, letterSpacing: -0.5, marginTop: 2 },

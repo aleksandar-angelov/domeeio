@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TOKENS, FONTS } from '../constants/tokens';
 import { BackIcon } from './Icon';
 import { useApp } from '../context/AppContext';
@@ -15,10 +16,11 @@ export const BackHeader: React.FC<BackHeaderProps> = ({ onBack, title }) => {
   const navigation = useNavigation();
   const { lang } = useApp();
   const t = T[lang];
+  const insets = useSafeAreaInsets();
   const handleBack = onBack || (() => navigation.goBack());
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top + 4 }]}>
       <TouchableOpacity onPress={handleBack} style={styles.backBtn} activeOpacity={0.7}>
         <BackIcon color={TOKENS.primary} size={22} />
         <Text style={styles.backText}>{t.back}</Text>
@@ -33,7 +35,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 12,
-    paddingTop: 4,
     paddingBottom: 14,
   },
   backBtn: {

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, ScrollView, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { TOKENS, FONTS } from '../constants/tokens';
 import { useApp } from '../context/AppContext';
@@ -18,6 +19,7 @@ export function ChatScreen() {
   const [input, setInput] = useState('');
   const [msgs, setMsgs] = useState<ChatMessage[]>(CHAT);
   const scrollRef = useRef<ScrollView>(null);
+  const insets = useSafeAreaInsets();
 
   const send = () => {
     if (!input.trim()) return;
@@ -69,7 +71,7 @@ export function ChatScreen() {
         </ScrollView>
 
         {/* Composer */}
-        <View style={[styles.composer, { paddingBottom: TAB_BAR_HEIGHT + 8 }]}>
+        <View style={[styles.composer, { marginBottom: TAB_BAR_HEIGHT + insets.bottom }]}>
           <View style={styles.inputWrap}>
             <TextInput
               value={input}

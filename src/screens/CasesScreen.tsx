@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { TOKENS, FONTS } from '../constants/tokens';
 import { useApp } from '../context/AppContext';
@@ -31,13 +32,14 @@ export function CasesScreen() {
   const t = T[lang];
   const { CASES, RESIDENTS } = DATA;
   const [filter, setFilter] = useState<'all' | 'mine'>('all');
+  const insets = useSafeAreaInsets();
 
   const filtered = filter === 'mine' ? CASES.filter(c => c.reporter === 'me') : CASES;
   const statusLabel: Record<string, string> = { open: t.open, in_progress: t.inProgress, resolved: t.resolved };
 
   return (
     <View style={{ flex: 1, backgroundColor: TOKENS.bg }}>
-      <ScrollView contentContainerStyle={{ paddingBottom: TAB_BAR_HEIGHT + 20 }} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={{ paddingBottom: TAB_BAR_HEIGHT + insets.bottom + 20 }} showsVerticalScrollIndicator={false}>
         <ScreenHeader title={t.tabs.cases} />
 
         {/* Filter tabs */}
@@ -86,7 +88,7 @@ export function CasesScreen() {
       </ScrollView>
 
       {/* FAB */}
-      <TouchableOpacity onPress={() => navigation.navigate('NewCase')} activeOpacity={0.8} style={styles.fab}>
+      <TouchableOpacity onPress={() => navigation.navigate('NewCase')} activeOpacity={0.8} style={[styles.fab, { bottom: TAB_BAR_HEIGHT + insets.bottom + 16 }]}>
         <PlusIcon color="#fff" size={20} />
       </TouchableOpacity>
     </View>
@@ -109,5 +111,5 @@ const styles = StyleSheet.create({
   caseReporter: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 6 },
   caseReporterText: { fontSize: 12, color: TOKENS.inkSoft, fontFamily: FONTS.medium },
   caseAssignee: { fontSize: 12, color: TOKENS.inkSoft, fontFamily: FONTS.medium },
-  fab: { position: 'absolute', right: 20, bottom: TAB_BAR_HEIGHT + 16, width: 56, height: 56, borderRadius: 28, backgroundColor: TOKENS.primary, alignItems: 'center', justifyContent: 'center', shadowColor: TOKENS.primary, shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.4, shadowRadius: 18, elevation: 6 },
+  fab: { position: 'absolute', right: 20, width: 56, height: 56, borderRadius: 28, backgroundColor: TOKENS.primary, alignItems: 'center', justifyContent: 'center', shadowColor: TOKENS.primary, shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.4, shadowRadius: 18, elevation: 6 },
 });
