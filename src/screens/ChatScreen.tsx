@@ -71,7 +71,7 @@ export function ChatScreen() {
         </ScrollView>
 
         {/* Composer */}
-        <View style={[styles.composer, { paddingBottom: TAB_BAR_HEIGHT + insets.bottom + 8 }]}>
+        <View style={[styles.composer, { marginBottom: TAB_BAR_HEIGHT + insets.bottom }]}>
           <View style={styles.inputWrap}>
             <TextInput
               value={input}
